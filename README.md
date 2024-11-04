@@ -1,3 +1,16 @@
+# Install Guide (buliding from source, I'm too lazy to just pre-build it :P)
+(requirements):
+Golang
+
+Just run these commands:
+git clone https://github.com/LiterallyKirby/Shell
+
+cd Shell
+
+go build
+
+Then just setup ur terminal of choice to run this the shell on start up
+
 # Shell
 A bad shell written in golang
 It has the features from your normal shell just with some custom commands I'll add on to over time
