@@ -8,6 +8,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
 
 	"golang.org/x/crypto/ssh/terminal"
 )
@@ -179,5 +182,34 @@ func Decrypt(input []string) {
 
 		fmt.Println("Decryption successful. File saved:", output_name)
 		break // Exit the loop since decryption was successful
+	}
+}
+func ChangeDir(command []string) {
+
+	if err := os.Chdir(command[1]); err != nil {
+		fmt.Printf("Error changing to directory %v\n", err)
+	} else {
+		wd, err := os.Getwd()
+		if err != nil {
+			fmt.Printf("failed to find wd, while the program will continue I would check that out %v\n", err)
+		}
+		fmt.Printf("Changed directory to %s\n", wd)
+	}
+}
+
+func Find(command []string) {
+	filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
+		if strings.Contains(info.Name(), command[1]) {
+			fmt.Println(path)
+		}
+		return nil
+	})
+}
+
+func History(history []string) {
+	for i, object := range history {
+		i++
+		istr := strconv.Itoa(i)
+		fmt.Println(istr + "): " + object)
 	}
 }
