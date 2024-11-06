@@ -10,7 +10,11 @@ cd Shell
 
 go build
 
+(bonus) move the shell exeucuteable to /usr/bin then name it what you want for ease of use (linux only :P)
+
 Then just setup ur terminal of choice to run this the shell on start up
+
+if you moved it to /usr/bin just run whatever you named it
 
 # Shell
 A bad shell written in golang
